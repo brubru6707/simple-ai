@@ -6,7 +6,7 @@ from tkinter import messagebox  # Message box
 import google.generativeai as genai  # AI
 
 # Configure the Generative AI with your API key
-genai.configure(api_key="your_api_key")
+genai.configure(api_key="")
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 def get_response(inquiry, highlighted_text):
@@ -27,6 +27,7 @@ def ask_inquiry(highlighted_text):
     root = tk.Tk()
     root.withdraw()
     root.attributes('-topmost', True)
+    root.focus_set()
     user_input = simpledialog.askstring("Gemini", "Inquiry: ")
     root.destroy()
     if user_input is not None:
@@ -39,6 +40,6 @@ def process_copied_text():
     # Process the highlighted text
     ask_inquiry(highlighted_text)
 
-keyboard.add_hotkey('ctrl+b', process_copied_text)
-
-keyboard.wait('ctrl+esc')
+def set_up_proccess_image_function():
+    keyboard.add_hotkey('ctrl+b', process_copied_text)
+    keyboard.wait('ctrl+esc')
