@@ -6,7 +6,7 @@ from tkinter import messagebox  # Message box
 import google.generativeai as genai  # AI
 
 # Configure the Generative AI with your API key
-genai.configure(api_key="")
+genai.configure(api_key="AIzaSyC__KT4oA-nyRESuVnRsI9PlZDsPxE_qis")
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 def get_response(inquiry, highlighted_text):
