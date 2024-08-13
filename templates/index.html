@@ -1,20 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>User Management</title>
+    <title>Simple AI</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'Roboto';
+            background-color: white;
+            color: black;
+        }
+        .question span, .response span{
+            font-weight: bold;
+        }
+        li {
+            list-style: none;
+        }
+        .ai_query {
+            border: 2px solid red;
+            padding: 10px;
+            border-radius: 5px;
+            margin-right: 10px;
+            box-shadow: -10px 16px black;
+        }
+        .ai_query:hover {
+            background-color: rgb(255, 223, 223);
+            cursor: pointer;
+        }
+        #commands {
+            display: flex;
+            flex-flow: row wrap;
+        }
+        h4 {
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+            padding: 2px;
+            margin: 3px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Users</h1>
+    <h1>Simple AI</h1>
+    <div id="commands">
+        <h4>Ctrl + W | to close window</h4>
+        <h4>Ctrl + C | to copy to clipboard</h4>
+        <h4>Ctrl + Alt + End | to call Gemini</h4>
+        <h4>Ctrl + Alt + Down Arrow | to open webpage</h4>
+    </div>
     <ul>
-        {% for ai_query in ai_queries %}
-        <li>{{ ai_query.query }}</li>
-        <li>{{ ai_query.response}}</li>
+        {% for ai_queries in ai_query %}
+        <br>
+        <br>
+        <div class="ai_query">
+            <li class="question">
+                <span>Question: </span>
+                {{ ai_queries.question }}
+            </li>
+            <li class="response">
+                <span>Response: </span>
+                {{ ai_queries.response}}
+            </li>
+        </div>
         {% endfor %}
     </ul>
-    <form method="POST">
-        Username: <input type="text" name="username"><br>
-        Email: <input type="email" name="email"><br>
-        <input type="submit" value="Add User">
-    </form>
 </body>
+<footer>
+    <script>
+        const responseElements = document.querySelectorAll('.response')
+        responseElements.forEach(element => {
+            originalText = element.innerHTML
+            alteredText = originalText.replaceAll("**", "")
+            alteredText = alteredText.replaceAll("*", "<br><br>-")
+            element.innerHTML = alteredText
+        })
+    </script>
+</footer>
 </html>
