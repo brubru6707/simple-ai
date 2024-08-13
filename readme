@@ -1,0 +1,8 @@
+Simple-AI | Simple, Faster, Smarter
+
+Simple-AI allows users to quickly access Gemini without the hassle of accessing the Web.All you need to do it hold Ctrl+Alt+End to do an inquiry. Then get your response
+
+If you want to see previous inquires and responses,
+hold Ctrl+Alt+Down_Arrow to access localhost:5000
+
+Resources: Flask, NextJs(external), Gemini AI

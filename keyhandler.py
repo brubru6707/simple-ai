@@ -54,7 +54,6 @@ def show_response(response):
 
 def process_copied_text():
     ask_inquiry(pyperclip.paste())
-    print("this is working btw")
 
 def open_webpage():
     webbrowser.open("http://localhost:5000")
